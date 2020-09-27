@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Prestige Local</title>
+    <style>
+      html {
+        font-family: "Arial";
+      }
+    </style>
+  </head>
+  <body>
+    <h2>base64-url</h2>
+    <p>
+      Today I wanted to explore whether I could add a "Share" feature on a
+      markdown editor I'm building called
+      <a href="https://apolloskine.netlify.app/">apolloskine</a>.
+    </p>
+    <p>
+      I knew that base64 encoding is an acceptable solution. But does this
+      string need to be encoded to be parsed in a url? Turns out it does which
+      is where the npm package
+      <a href="https://www.npmjs.com/package/base64-url">base64-url</a> comes
+      along.
+    </p>
+    <pre>
+      import base64url from 'base64-url';
+
+      const decodedFromText = base64url.encode(content);
+      const parsedFromUrl = base64url.decode(content);
+    </pre>
+    <p>
+      I'm assuming there are some limitations with this approach, like
+      potentially a limit on the url length? I'm sure its fine for my simple
+      note taking app.
+    </p>
+  </body>
+</html>
