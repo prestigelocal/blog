@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <title>Prestige Local</title>
+    <style>
+      html {
+        font-family: "Arial";
+      }
+    </style>
+  </head>
+  <body>
+    <h2>From json to graphql</h2>
+    <p>Recently I've been learning a bunch about the graphql ecosystem and Apollo. More specifically I've been creating a workflow
+    for how I can generate graphql from existing backend services in a consistent way.
+    </p>
+    <h3>
+    Convert json to graphql
+    </h3>
+    <p>
+    The json file itself is enough to generate a graphql schema, thanks to tools like walmartlabs
+     <a href="https://github.com/walmartlabs/json-to-simple-graphql-schema">json to simple graphql converter</a>.
+    </p>
+    <p>
+    I ended up extending this package to work across an entire directory. My rationale is that I would like to be able to update the schema
+    automatically with any backend changes to the json structure. You can check this cli, <a href="https://github.com/matthoffner/jsondir2graphql">jsondir2graphql here</a>.
+    </p>
+    <h3>
+    Creating typescript from graphql
+    </h3>
+    <p>
+    With the graphql type definition generated, we can then create some typescript definitions to use in the resolver. For this I'm currently 
+    using <a href="https://github.com/dotansimha/graphql-code-generator">graphql code generator</a>.
+    </p>
+    <h3>
+    Test driven resolver development
+    </h3>
+    <p>
+    With graphql we can do test driven development using our existing json file, or simply using Apollo's mocking features to generate data from
+    the graphql schema. 
+    </p>
+    <h3>
+    Automating things
+    </h3>
+    <p>
+    With this flow there isn't necessarily an immediate need for further automation. But to keep up with changes to the existing backend there
+    should probably be a process for updating schema. Perhaps if the backend itself was already graphql we could handle breaking changes easier,
+    but that might also expose more graphql that isn't needed.
+    </p>
+    <p>
+    Either way with this approach we simply would need to automate writing the updated responses to the json directory and kicking off jsondir2graphql.
+    </p>
+  </body>
+</html>
